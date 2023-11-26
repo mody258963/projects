@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 
 Route::get('/Product/page', [ProductController::class,'productspage'])->name('add_product');
+Route::post('/Product/store',[ProductController::class, 'store'])->name('save_products');

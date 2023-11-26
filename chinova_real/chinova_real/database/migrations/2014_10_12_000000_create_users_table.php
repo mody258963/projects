@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->enum('role',['admin','supplier','user'] );
+            $table->string('image');
+            $table->bigInteger('phone')->unique();
+            $table->boolean('is_block');
+            $table->string('national_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -29,4 +36,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+
 };
