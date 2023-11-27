@@ -9,12 +9,13 @@
             <h5 class="title">Edit Profile</h5>
           </div>
           <div class="card-body">
-            <form action="" method="post">
+            <form action="{{route('save_products')}}" method="POST">
+              @csrf 
               <div class="row">
                 <div class="col-md-5 pr-1">
                   <div class="form-group">
                     <label>Title </label>
-                    <input type="text" class="form-control" placeholder="Title" >
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Title" >
                   </div>
                 </div>    
               </div>           
@@ -22,7 +23,7 @@
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Product Link</label>
-                    <input type="text" class="form-control" placeholder="Product Link" >
+                    <input type="text" id="link" name="link" class="form-control" placeholder="Product Link" >
                   </div>
                 </div>
                 <div class="col-md-5 pl-2">
@@ -36,13 +37,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>quntity</label>
-                    <input type="text" class="form-control" placeholder="quntity" >
+                    <input type="text" id="quntity" name="quntity" class="form-control" placeholder="quntity" >
                   </div>
                 </div>
                 <div class="col-md-4 pr-1">
                   <div class="form-group">
                     <label>Product Weight</label>
-                    <input type="text" class="form-control" placeholder="Product Weight" >
+                    <input type="text" id="wieght" name="wieght" class="form-control" placeholder="Product Weight" >
                   </div>
                 </div>
                 <div class="col-md-1 pr-2">
@@ -59,7 +60,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Description</label>
-                    <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
+                    <textarea rows="4" id="description" name="description" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
                   </div>
                 </div>
               <div>
