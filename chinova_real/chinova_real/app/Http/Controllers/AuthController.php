@@ -23,7 +23,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials , true)) {
-            return redirect(route('dashboard'))->with("success","Welcome Back!"); // Redirect to the intended page
+            return redirect(route('main'))->with("success","Welcome Back!"); // Redirect to the intended page
         } else {
             return back()->withErrors([
                 'email' => 'Invalid credentials',
@@ -34,35 +34,22 @@ class AuthController extends Controller
     public function regester(Request $request){
         $credentials = $request->validate([
             'name' => 'required',
+            'phone'=> 'required|min:11|max:11',
             'email'=> 'required|email',
             'password'=> 'required',
             'cpassword'=> 'same:password',
             ]);
-        // $user = Auth::user();
-            // if ($user) {
-            //  $credentials['role'] = $request->role;
+        $user = Auth::user();
+            if (!$user) {
         User::create($credentials);
 
         session()->flash("message","You Signup seccsfully");
-        return redirect('dashboard');
+        return redirect(route('main'));
 // }else {
 //     return back()->withErrors([
 //         'email' => 'Invalid credentials',
 //     ]);
 }
 
-public function storeUser(Request $request){
-
-    $data = $request->validate([
-        'name'=> 'required',
-        "email"=> "required|email|unique:users,email,except,id",
-        "password"=> "required",
-        "cpassword"=> "same:cpassword"
-        ]);
-     User::create($data);
-      return redirect(route('dashboard'))->with('success','User created Successfully!');
-
-
-}
-
+    }
 }

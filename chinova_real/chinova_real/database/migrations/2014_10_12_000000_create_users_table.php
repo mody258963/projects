@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('role',['admin','supplier','user'] );
-            $table->string('image');
+            $table->enum('role',['admin','supplier','user'])->default('user');
+            $table->string('image')->nullable();
             $table->bigInteger('phone')->unique();
-            $table->boolean('is_block');
-            $table->string('national_id');
+            $table->boolean('is_block')->default(0);
+            $table->string('national_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

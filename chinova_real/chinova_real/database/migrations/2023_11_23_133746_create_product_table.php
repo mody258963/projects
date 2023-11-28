@@ -6,24 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
+    /**     * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('weight');
+            $table->integer('weight')->nullable();
             $table->decimal('price')->default(0.00);
             $table->string('link');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->boolean('is_paid')->default(0);
-            $table->string('discription');
-            $table->bigInteger('code');
-            $table->integer('quantity');
-            $table->enum('statuse',['arrived','panding','accpted','rejected','will arrive soon','in_progress' ])->default('in_progress');
+            $table->string('description')->nullable();
+            $table->bigInteger('code')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->enum('status',['arrived','panding','accpted','rejected','will arrive soon','in_progress' ])->default('in_progress');
             $table->timestamps();
         });
     }

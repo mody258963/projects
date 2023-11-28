@@ -26,12 +26,12 @@ Route::get('/', function () {
 
 
 Route::get('/Product/page', [ProductController::class,'productspage'])->name('add_product');
-Route::post('/Product/store',[ProductController::class, 'store'])->name('save_products');
+Route::post('/Product/store',[ProductController::class, 'store'])->name('save.products');
 
 
 Route::post('/login' , [AuthController::class,'login'])->name('login');
 Route::get('/signup' , [AuthController::class,'regsterPage'])->name('SignUpPage');
-Route::post('/signupuser' , [AuthController::class,'storeUser'])->name('StoreUser');
+Route::post('/signupuser' , [AuthController::class,'regester'])->name('StoreUser');
 Route::get('/loginPage' , [AuthController::class,'getLoginPage'])->name('loginPages');
 
 Route::get('/auth/google', [SocialiteController::class,'redirectToGoogle'])->name('google.uri');

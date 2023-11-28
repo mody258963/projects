@@ -9,7 +9,7 @@
             <h5 class="title">Edit Profile</h5>
           </div>
           <div class="card-body">
-            <form action="{{route('save_products')}}" method="POST">
+            <form action="{{route('save.products')}}" method="post">
               @csrf
               <div class="row">
                 <div class="col-md-5 pr-1">
@@ -37,13 +37,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>quntity</label>
-                    <input type="text" id="quntity" name="quntity" class="form-control" placeholder="quntity" >
+                    <input type="number" id="quantity" name="quantity" class="form-control" placeholder="quntity" >
                   </div>
                 </div>
                 <div class="col-md-4 pr-1">
                   <div class="form-group">
                     <label>Product Weight</label>
-                    <input type="text" id="weight" name="weight" class="form-control" placeholder="Product Weight" >
+                    <input type="number" id="weight" name="weight" class="form-control" placeholder="Product Weight" >
                   </div>
                 </div>
                 <div class="col-md-1 pr-2">

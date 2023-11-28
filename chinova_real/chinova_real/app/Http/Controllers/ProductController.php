@@ -17,7 +17,7 @@ class ProductController extends Controller
 
    public function store(Request $request){
 
-       //dd($request);
+     // dd($request);
 
        $code = random_int(1,9999999999);
 
@@ -25,9 +25,9 @@ class ProductController extends Controller
            'description' => 'required|max:1255|min:3|string',
            'title'=> 'required|max:1255|min:3|string',
            'link'=> 'required',
-           'weight'=> 'required|max:1255|min:1',
+           'weight'=> 'required|max:1255|min:1|int',
            'image'=> 'image|required|max:2032',
-           'quntity'=> 'required|max:500|min:1'
+           'quantity'=> 'required|max:500|min:1|int',
        ]);
        $image = '';
        if($request->has('image')){
@@ -37,15 +37,12 @@ class ProductController extends Controller
        $data['image'] = $image;
        $data['user_id'] = 1;
        $data['code'] = $code;
-      //  $user = Auth::user();
-      //  if(!$user){
-      //      return abort(403);
-      //  }
+       $user = Auth::user();
+       if(!$user){
+           return abort(403);
+       }
        $post = Product::create($data);
 
-       if($post){
-           session()->flash("message","post edited successfully");
-           return redirect(route('posts.index'));
-       }
+
 }
 }
