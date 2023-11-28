@@ -12,7 +12,7 @@ class Product extends Model
         'description',
         'title',
         'price',
-        'wieght',
+        'weight',
         'link',
         'is_paid',
         'code',

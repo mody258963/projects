@@ -10,15 +10,15 @@
           </div>
           <div class="card-body">
             <form action="{{route('save_products')}}" method="POST">
-              @csrf 
+              @csrf
               <div class="row">
                 <div class="col-md-5 pr-1">
                   <div class="form-group">
                     <label>Title </label>
                     <input type="text" id="title" name="title" class="form-control" placeholder="Title" >
                   </div>
-                </div>    
-              </div>           
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
@@ -43,7 +43,7 @@
                 <div class="col-md-4 pr-1">
                   <div class="form-group">
                     <label>Product Weight</label>
-                    <input type="text" id="wieght" name="wieght" class="form-control" placeholder="Product Weight" >
+                    <input type="text" id="weight" name="weight" class="form-control" placeholder="Product Weight" >
                   </div>
                 </div>
                 <div class="col-md-1 pr-2">
@@ -55,7 +55,7 @@
 </div>
 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
   <footer class="footer">

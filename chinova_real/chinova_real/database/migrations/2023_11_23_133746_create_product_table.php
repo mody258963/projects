@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('weight');
-            $table->integer('price');
+            $table->decimal('price')->default(0.00);
             $table->string('link');
             $table->string('image');
             $table->foreignId('user_id')->constrained();
-            $table->boolean('is_paid');
+            $table->boolean('is_paid')->default(0);
             $table->string('discription');
-            $table->string('code',12)->autoIncrement();
+            $table->bigInteger('code');
             $table->integer('quantity');
-            $table->enum('statuse',['arrived','panding','accpted','rejected','will arrive soon','in_progress' ]);
+            $table->enum('statuse',['arrived','panding','accpted','rejected','will arrive soon','in_progress' ])->default('in_progress');
             $table->timestamps();
         });
     }

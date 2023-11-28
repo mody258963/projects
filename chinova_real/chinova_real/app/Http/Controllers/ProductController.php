@@ -17,12 +17,15 @@ class ProductController extends Controller
 
    public function store(Request $request){
 
+       //dd($request);
+
+       $code = random_int(1,9999999999);
 
       $data =  $request->validate([
            'description' => 'required|max:1255|min:3|string',
            'title'=> 'required|max:1255|min:3|string',
            'link'=> 'required',
-           'wieght'=> 'required|max:1255|min:1',
+           'weight'=> 'required|max:1255|min:1',
            'image'=> 'image|required|max:2032',
            'quntity'=> 'required|max:500|min:1'
        ]);
@@ -32,17 +35,17 @@ class ProductController extends Controller
        }
        $image = str_replace('public','storage',$image);
        $data['image'] = $image;
-       $data['user_id'] = 2;
+       $data['user_id'] = 1;
+       $data['code'] = $code;
       //  $user = Auth::user();
       //  if(!$user){
       //      return abort(403);
       //  }
        $post = Product::create($data);
-      
+
        if($post){
            session()->flash("message","post edited successfully");
            return redirect(route('posts.index'));
        }
-       dd($post);
 }
 }
