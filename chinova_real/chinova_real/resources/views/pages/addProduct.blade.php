@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('stats')
 
-<div class="content">
+{{-- <div class="content">
     <div class="row">
       <div class="col-md-8">
         <div class="card">
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="col-md-1 pr-2">
-                <div class="form-group">
+                <div class="form-group ">
                 <select>
   <option value="option1">KG</option>
   <option value="option2">LB</option>
@@ -63,9 +63,9 @@
                     <textarea rows="4" id="description" name="description" cols="80" class="form-control" placeholder="Here can be your description" ></textarea>
                   </div>
                 </div>
-              <div>
-              <button type="submit">Submit</button>
-              </div>
+                <div class="form-group form-button">
+                    <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                </div>
               </div>
 
             </form>
@@ -103,5 +103,59 @@
       </div>
     </div>
   </footer>
+</div>
+@endsection --}}
+<div class="card card-primary">
+
+
+    <form action="{{route('save.products')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="card-body" >
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea type="text" class="form-control" id="description" name="description" placeholder="Post description"></textarea>
+                 <p>@error('description') @enderror</p>
+            </div>
+            <div class="card-body" >
+            <div class="form-group">
+                <label for="title">title</label>
+                <textarea type="text" class="form-control" id="title" name="title" placeholder="Post title"></textarea>
+                 <p>@error('description') @enderror</p>
+            </div>
+            <div class="card-body" >
+            <div class="form-group">
+                <label for="wieght">wieght</label>
+                <textarea type="number" class="form-control" id="weight" name="weight" placeholder="Post wieght"></textarea>
+                 <p>@error('weight') @enderror</p>
+            </div>
+            <div class="card-body" >
+                <div class="form-group">
+                    <label for="wieght">wieght</label>
+                    <textarea type="number" class="form-control" id="quantity" name="quantity" placeholder="Post q"></textarea>
+                     <p>@error('quantity') @enderror</p>
+                </div>
+            <div class="form-group" >
+                <label for="exampleInputFile">Image</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label"  for="exampleInputFile">Choose file</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body" >
+                <div class="form-group">
+                    <label for="title">title</label>
+                    <textarea type="text" class="form-control" id="link" name="link" placeholder="Post link"></textarea>
+                     <p>@error('link') @enderror</p>
+                </div>
+
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </div>
 @endsection

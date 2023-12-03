@@ -20,7 +20,12 @@
               <p>Send A Requst</p>
             </a>
           </li>
-
+          <li>
+            <a href="{{route('admin.page')}}">
+              <i class="now-ui-icons shopping_box"></i>
+              <p>Requsts</p>
+            </a>
+          </li>
 
         </ul>
       </div>

@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 Route::get('/Product/page', [ProductController::class,'productspage'])->name('add_product');
 Route::post('/Product/store',[ProductController::class, 'store'])->name('save.products');
+Route::get('/adminPage',[ProductController::class,'adminPage'])->name('admin.page');
 
 
 Route::post('/login' , [AuthController::class,'login'])->name('login');

@@ -30,7 +30,7 @@
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
                         <form method="POST" action="{{route('login')}}" class="register-form" id="login-form">
-                            @csrf 
+                            @csrf
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="your_name" placeholder="Email"/>
@@ -43,8 +43,8 @@
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                         <div class="social-login">
@@ -67,3 +67,6 @@
     <script src="{{asset('assets/js/main.js')}}"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+
+
+
