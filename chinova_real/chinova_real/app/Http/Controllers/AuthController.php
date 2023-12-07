@@ -34,17 +34,18 @@ class AuthController extends Controller
     public function regester(Request $request){
         $credentials = $request->validate([
             'name' => 'required',
-            'phone'=> 'required|min:11|max:11',
+            'phone'=> 'required|min:6|max:11',
             'email'=> 'required|email',
             'password'=> 'required',
             'cpassword'=> 'same:password',
             ]);
-        $user = Auth::user();
-            if (!$user) {
+        // $user = Auth::user();
+        //     if (!$user) {
         User::create($credentials);
 
         session()->flash("message","You Signup seccsfully");
         return redirect(route('main'));
+
 // }else {
 //     return back()->withErrors([
 //         'email' => 'Invalid credentials',
@@ -52,4 +53,4 @@ class AuthController extends Controller
 }
 
     }
-}
+

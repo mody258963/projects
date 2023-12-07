@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->boolean('is_paid')->default(0);
             $table->bigInteger('code');
-            $table->enum('status',['arrived','in_progress','accept','rejected','panding'])->default('in_progress');
+            $table->enum('status',['arrived','in_progress','accept waiting for payment','rejected','panding'])->default('in_progress');
             $table->string('link');
             $table->foreignId('user_id')->constrained();
 

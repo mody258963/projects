@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OtpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SocialiteController;
@@ -24,10 +25,17 @@ Route::get('/', function () {
     return view('auth.login');
     });
 
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/Product/page', [ProductController::class,'productspage'])->name('add_product');
+    Route::post('/Product/store',[ProductController::class, 'store'])->name('save.products');
+    Route::get('/adminPage',[ProductController::class,'adminPage'])->name('admin.page');
+    Route::post('/adminPage/price/{id}',[ProductController::class,'priceEditing'])->name('price.editing');
+    Route::post('/adminPage/rejection/{id}',[ProductController::class,'rejection'])->name('status.rejection');
 
-Route::get('/Product/page', [ProductController::class,'productspage'])->name('add_product');
-Route::post('/Product/store',[ProductController::class, 'store'])->name('save.products');
-Route::get('/adminPage',[ProductController::class,'adminPage'])->name('admin.page');
+
+});
+
 
 
 Route::post('/login' , [AuthController::class,'login'])->name('login');

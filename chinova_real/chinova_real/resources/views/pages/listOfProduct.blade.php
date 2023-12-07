@@ -20,30 +20,52 @@
           <th>
             weight
           </th>
-          <th class="text-right">
+          <th >
             image
           </th>
+          <th >
+            code
+          </th>
+          <th>
+         Submit price
+          </th>
         </thead>
-        @foreach($product as $products)
-        @if($products->status == 'in_progress')
+        @foreach($products as $product)
+        @if($product->status == 'in_progress' && $product->user_id == Auth::user()->id )
 
         <tbody>
           <tr>
-            <td>1
-                      <li>{{ $products->title }}</li>
+            <td>
+                <li>{{ $product->title }}</li>
 
             </td>
             <td>
-                <li>{{ $products->quantity }}</li>
+                <li>{{ $product->quantity }}</li>
             </td>
             <td>
-                <li>{{ $products->link }}</li>
+                <li>{{ $product->link }}</li>
             </td>
             <td>
-                <li>{{ $products->weight }}</li>
+                <li>{{ $product->weight }}</li>
             </td>
-            <td class="text-right">
-                <li>{{ $products->image }}</li>
+            <td >
+                <li>{{ $product->image }}</li>
+            </td>
+            <td>
+                <li>{{ $product->code }}</li>
+            </td>
+            <td>
+                <form action="{{ route('price.editing',$product->id) }}" method="POST">
+                    @csrf
+                    <input type="number" name="price">
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <form action="{{ route('status.rejection',$product->id) }}" method="POST">  <div class="card-footer">
+                @csrf
+                <button type="submit" class="btn btn-primary">Reject</button>
+            </div></form>
             </td>
 
           </tr>

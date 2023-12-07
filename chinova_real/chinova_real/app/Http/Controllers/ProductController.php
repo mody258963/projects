@@ -12,10 +12,11 @@ class ProductController extends Controller
         return view('pages.addProduct');
     }
 
+
     public function adminPage(Product $product){
         $product = Product::all();
        return view('pages.listOfProduct',[
-            'product' => $product
+            'products' => $product
         ]);
     }
 
@@ -37,9 +38,9 @@ class ProductController extends Controller
          }
          $image = str_replace('public','storage',$image);
          $data['image'] = $image;
-         $data['user_id'] = 1;
+         $data['user_id'] = Auth::user()->id;
          $data['code'] = $code;
-         unset($data['_token']);
+        //  unset($data['_token']);
          return  Product::create($data);
         //  $user = Auth::user();
         //  if(!$user){
@@ -53,4 +54,24 @@ class ProductController extends Controller
 
         //  return redirect()->back()->with('error','This post not created');
      }
+
+
+    public function priceEditing(Request $request,$id){
+    $data = $request->validate([
+    'price' => 'required',
+    ]);
+
+    $product = Product::find($id);
+    $product->price = $request->price;
+    $product->save();
+
+    return redirect()->back();
+
+    }
+   public function rejection($id){
+        $product = Product::find($id);
+       $product->status = 'rejected' ;
+            $product->save();
+            return redirect()->back();
+}
 }
